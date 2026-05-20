@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+
+# Claude Code per-user/per-machine settings.
+# CLAUDE.md (shared agent context) is committed; *.local.json is not.
+.claude/settings.local.json
+
+# Editor / OS noise
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
