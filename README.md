@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="icons/icon128.png" alt="Element Identifier" width="128" height="128">
+</p>
+
 # Element Identifier
 
 A tiny Chrome extension for tagging any element on a page with a stable `data-ei-id` attribute, then copying a ready-to-use `[data-ei-id="…"]` selector to your clipboard. Built for handing selectors to AI coding agents (Cursor, Claude Code, etc.) over a Chrome MCP so they can act on the element you're pointing at.
