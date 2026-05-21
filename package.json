@@ -1,0 +1,15 @@
+{
+  "name": "element-identifier",
+  "version": "1.0.0",
+  "description": "Chrome extension that tags any DOM element with a unique data-ei-id and copies a ready-to-paste [data-ei-id=\"…\"] selector to the clipboard. Built for handing stable selectors to AI coding agents over Chrome MCP.",
+  "private": true,
+  "scripts": {
+    "package": "bash scripts/package.sh",
+    "icons": "bash scripts/regen-icons.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoWhileGeek/element-identifier.git"
+  },
+  "license": "MIT"
+}

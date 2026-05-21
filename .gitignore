@@ -1,9 +1,16 @@
+# Packaged extension artifacts (produced by `npm run package`).
+dist/
+
 # macOS
 .DS_Store
 
 # Claude Code per-user/per-machine settings.
 # CLAUDE.md (shared agent context) is committed; *.local.json is not.
 .claude/settings.local.json
+
+# npm — no runtime deps, but `npm install` still creates an (empty) node_modules
+node_modules/
+npm-debug.log*
 
 # Editor / OS noise
 .idea/

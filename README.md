@@ -35,7 +35,17 @@ To reload after edits: click the circular reload icon on the extension card in `
 - `manifest.json` — Manifest V3 declaration. Requests `activeTab` + `scripting` + `clipboardWrite` and runs `content.js` on all URLs.
 - `background.js` — Service worker. On toolbar click it pings the active tab; if the content script isn't there yet (e.g. tab pre-dates the install) it injects it on demand, then sends a `TOGGLE` message. Also rasterizes `icons/icon.svg` at 16/32/48/128 px on install/startup and calls `chrome.action.setIcon` so the toolbar icon stays crisp at any DPI.
 - `content.js` — Injects a Shadow-DOM-isolated overlay so page CSS can never leak into the highlight box or the tooltip. While selecting mode is active it captures mouse + key events in the capture phase so it can swallow clicks on links and buttons before the page sees them.
-- `icons/icon.svg` — Canonical vector source for the toolbar icon. Edit this file to change the design; the service worker handles rasterization. The PNGs alongside it are still used by `chrome://extensions` and other surfaces that `chrome.action.setIcon` doesn't reach — regenerate them from the SVG if you make significant design changes.
+- `icons/icon.svg` — Canonical vector source for the toolbar icon. Edit this file to change the design, then run `npm run icons` to regenerate the PNGs that `chrome://extensions` and other static surfaces use.
+
+## Packaging for the Chrome Web Store
+
+```bash
+npm run package
+```
+
+Produces `dist/element-identifier-v<version>.zip` containing only the runtime files Chrome loads (no README, no docs, no `.git`). Version comes from `manifest.json`.
+
+For the full publishing walkthrough — store-listing copy, permission justifications, privacy disclosure answers, and the checklist of things only you can do (developer account, screenshots, dashboard upload) — see [`docs/CHROME_STORE.md`](docs/CHROME_STORE.md). Privacy policy lives in [`PRIVACY.md`](PRIVACY.md).
 
 ## Limitations
 
@@ -56,5 +66,13 @@ element-identifier/
 │   ├── icon32.png
 │   ├── icon48.png
 │   └── icon128.png
+├── scripts/
+│   ├── package.sh      # `npm run package` — builds dist/<version>.zip
+│   └── regen-icons.sh  # `npm run icons` — re-rasterize PNGs from icon.svg
+├── docs/
+│   └── CHROME_STORE.md # paste-ready store listing + permission justifications
+├── PRIVACY.md
+├── package.json
+├── CLAUDE.md
 └── README.md
 ```
